@@ -1,0 +1,218 @@
+<!-- {% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+line below should be in comment
+Add icon library 
+<link rel="stylesheet" href="{% static 'patient/signup_form/signup.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+</head>
+<body>
+<form action='signup_patient' method="POST" style="max-height:500px; max-width:450px;  margin:auto;">
+ <h1></b><center>SIGN UP AS PATIENT</center></b></h1><br>
+
+  {% csrf_token %}
+  
+  <center>
+      <div>
+        {% for message in messages %}
+        <div class="alert alert-warning" role="alert">
+            <h3 style="color: red;">{{message}}</h3>
+          </div>
+        {% endfor %}
+      </div>
+      </center>
+
+
+  <div class="input-container">
+    <i class="fa fa-user icon"></i>
+    <input class="input-field" type="text" placeholder="Username" name="username" required>
+  </div>
+
+  
+  <div class="input-container">
+    <i class="fa fa-user icon"></i>
+    <input class="input-field" type="text" placeholder="Name" name="name" required>
+  </div>
+
+  <div class="input-container">
+    <i class="fa fa-envelope icon"></i>
+    <input class="input-field" type="text" placeholder="Email" name="email" required>
+  </div>
+   <div class="input-container">
+    <i class="fa fa-calendar icon"></i>
+    <input class="input-field" type="date" placeholder="Date-of-birth" name="dob" required>
+  </div>
+  <div class="input-container">
+    <i class="fa fa-birthday-cake icon"></i>
+    <input class="input-field" type="number" placeholder="Age" name="age" required>
+  </div>
+  <div class="input-container">
+  
+  <i class="fa fa-genderless icon"></i>
+    <input class="radio-btn" type="radio" name="gender" value="male" checked> Male 
+  <input class="radio-btn" type="radio" name="gender" value="female"> Female
+  <input class="radio-btn" type="radio" name="gender" value="other"> Other 
+ 
+  </div>
+  
+  <div class="input-container">
+    <i class="fa fa-address-book icon"></i>
+    <input class="input-field" type="text" placeholder="Address" name="address" required>
+  </div>
+  <div class="input-container">
+    <i class="fa fa-phone icon"></i>
+    <input class="input-field" type="number" placeholder="Mobile" name="mobile" required>
+  </div>
+  
+  <div class="input-container">
+    <i class="fa fa-key icon"></i>
+    <input class="input-field" type="password" placeholder="Password" name="password" required>
+  </div>
+  
+  <div class="input-container">
+    <i class="fa fa-check icon"></i>
+    <input class="input-field" type="password" placeholder="Retype Password" name="password1" required>
+  </div>
+
+  <br>
+
+  <button type="submit" class="btn btn-primary">Register</button>
+  <br><br>
+</form>
+<br><br><br>
+</body>
+</html> -->
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign Up as Patient</title>
+  <!-- Bootstrap 4 CDN -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Your Custom CSS (optional) -->
+  <link rel="stylesheet" href="{% static 'patient/signup_form/signup.css' %}">
+  <style>
+    body {
+      background: linear-gradient(135deg, #f8fffc 0%, #e3e6ff 100%);
+      min-height: 100vh;
+    }
+    .signup-card {
+      max-width: 500px;
+      margin: 48px auto;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(60,132,206,0.13);
+      background: #fff;
+      padding: 2.5rem 2rem 2rem 2rem;
+    }
+    .form-icon {
+      color: #007bff;
+      margin-right: 12px;
+      min-width: 32px;
+      text-align: center;
+    }
+    .input-group .form-control {
+      border-radius: 8px;
+      box-shadow: none !important;
+    }
+    .form-label {
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .btn-primary {
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+      padding: 0.6rem 2.5rem;
+      margin-top: 1rem;
+    }
+    .gender-options label {
+      margin-right: 18px;
+      font-weight: 500;
+    }
+    .alert {
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="signup-card">
+  <h2 class="text-center mb-4"><i class="fa fa-user"></i> Sign Up as Patient</h2>
+  <form action='signup_patient' method="POST" autocomplete="off">
+    {% csrf_token %}
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-warning text-center" role="alert">
+          <strong>{{ message }}</strong>
+        </div>
+      {% endfor %}
+    {% endif %}
+
+    <div class="mb-3 input-group">
+      <span class="input-group-text form-icon"><i class="fa fa-user"></i></span>
+      <input type="text" class="form-control" placeholder="Username" name="username" required>
+    </div>
+    <div class="mb-3 input-group">
+      <span class="input-group-text form-icon"><i class="fa fa-user"></i></span>
+      <input type="text" class="form-control" placeholder="Full Name" name="name" required>
+    </div>
+    <div class="mb-3 input-group">
+      <span class="input-group-text form-icon"><i class="fa fa-envelope"></i></span>
+      <input type="email" class="form-control" placeholder="Email" name="email" required>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mb-3 input-group">
+        <span class="input-group-text form-icon"><i class="fa fa-calendar"></i></span>
+        <input type="date" class="form-control" name="dob" required>
+      </div>
+      <div class="col-md-6 mb-3 input-group">
+        <span class="input-group-text form-icon"><i class="fa fa-birthday-cake"></i></span>
+        <input type="number" class="form-control" placeholder="Age" name="age" min="0" max="120" required>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label d-block"><i class="fa fa-genderless"></i> Gender</label>
+      <div class="gender-options">
+        <input type="radio" class="btn-check" name="gender" id="male" value="male" checked>
+        <label class="btn btn-outline-primary btn-sm" for="male">Male</label>
+        <input type="radio" class="btn-check" name="gender" id="female" value="female">
+        <label class="btn btn-outline-primary btn-sm" for="female">Female</label>
+
+      </div>
+    </div>
+    <div class="mb-3 input-group">
+      <span class="input-group-text form-icon"><i class="fa fa-address-book"></i></span>
+      <input type="text" class="form-control" placeholder="Address" name="address" required>
+    </div>
+    <div class="mb-3 input-group">
+      <span class="input-group-text form-icon"><i class="fa fa-phone"></i></span>
+      <input type="tel" class="form-control" placeholder="Mobile" name="mobile" pattern="[0-9]{10,15}" required>
+    </div>
+    <div class="mb-3 input-group">
+      <span class="input-group-text form-icon"><i class="fa fa-key"></i></span>
+      <input type="password" class="form-control" placeholder="Password" name="password" required>
+    </div>
+    <div class="mb-3 input-group">
+      <span class="input-group-text form-icon"><i class="fa fa-check"></i></span>
+      <input type="password" class="form-control" placeholder="Retype Password" name="password1" required>
+    </div>
+    <div class="d-grid">
+      <button type="submit" class="btn btn-primary btn-block">Register</button>
+    </div>
+  </form>
+</div>
+
+<!-- Bootstrap JS (optional, for interactivity) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
